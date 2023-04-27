@@ -1,4 +1,4 @@
-# Binary Search Trees
+# AVL Trees
 
 The file `AVL.py` contains the class definition of the objects: *Node* and *AVL tree*. While `main.py` holds a few operations done to demonstrate the functionality of the data structure.
 
