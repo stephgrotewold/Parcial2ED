@@ -56,4 +56,4 @@ print(values_in_order)
 #para visualizar el AVL crea un .pdf
 print('\n*** Graph Nodes in Tree ***\n')
 dot = avl_tree.to_graphviz()
-dot.view()
+dot.render("AVL-TREE.gv", view=True)
