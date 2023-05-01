@@ -16,7 +16,7 @@ print('\n*** Inserting Nodes in Tree ***\n')
 #node_values = [77,12, 10, 4, 11, 16, 55, 5, 63, 2]
 
 #insert values at random, you can n to make it the quantity of nodes you want
-n = 10
+n = 200
 node_values = [random.randint(1, 100) for _ in range(n)]
 # insert some values using a loop
 for value in node_values:
@@ -52,3 +52,8 @@ values_in_order = avl_tree.traverse_in_order()
 
 # print the values in order
 print(values_in_order)
+
+#para visualizar el AVL crea un .pdf
+print('\n*** Graph Nodes in Tree ***\n')
+dot = avl_tree.to_graphviz()
+dot.view()

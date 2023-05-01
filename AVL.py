@@ -1,7 +1,4 @@
-
-from typing import List
 #aqui pongamos los metodos de insert,search, delete,min,max y traverse.
-
 
 '''
 Se requiere hacer los siguientes cambios del codigo del BSL para que sea un AVL
@@ -16,6 +13,8 @@ Se requiere hacer los siguientes cambios del codigo del BSL para que sea un AVL
 
 5) Actualizar la altura y el factor de equilibrio de los nodos después de cada operación.
 '''
+
+from graphviz import Digraph
 from typing import List
 class Node:
     """
@@ -107,6 +106,42 @@ class AVLTree:
         Recursively inserts a new node with the given value into the subtree rooted at the given node,
         and balances the tree if necessary. Returns the updated subtree after insertion and balancing.
     """   
+
+    def to_graphviz(self):
+        """
+        Generates a Graphviz representation of the AVL tree.
+
+        Returns:
+            A Digraph object representing the AVL tree.
+        """
+        dot = Digraph(comment='AVL Tree')
+        self._to_graphviz(dot, self.root)
+        return dot
+
+    def _to_graphviz(self, dot, node):
+        """
+        Generates a Graphviz representation of the given node in the AVL tree
+        and its children nodes.
+
+        Args:
+            dot (Digraph): A Digraph object representing the AVL tree.
+            node (AVLNode): The root node of the subtree to generate the
+                Graphviz representation for.
+
+        Returns:
+            None
+        """
+        if node is None:
+            return
+
+        dot.node(str(node.data), str(node.data))
+        if node.left_child is not None:
+            dot.edge(str(node.data), str(node.left_child.data), label="Left")
+            self._to_graphviz(dot, node.left_child)
+
+        if node.right_child is not None:
+            dot.edge(str(node.data), str(node.right_child.data), label="Right")
+            self._to_graphviz(dot, node.right_child)
 
     def __init__(self):
         """
