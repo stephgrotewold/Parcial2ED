@@ -68,13 +68,7 @@ values_in_order = avl_tree.traverse_in_order()
 # print the values in order
 print(values_in_order)
 
-#para visualizar el AVL crea un .pdf
-print('\n*** Graph Nodes in Tree ***\n')
-print("Another window will pop up and it will save as AVL-TREE.gv.pdf")
-dot = avl_tree.to_graphviz()
-dot.render("AVL-TREE.gv", view=True)
-
-#----------------------------------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------------------------
 
 print('\n*** Deleting Nodes from Tree ***\n')
 
@@ -87,9 +81,20 @@ print(f"Deleted node with value {value_to_delete}")
 print(avl_tree.traverse_in_order())
 
 print('\n*** Finding Minimum Value Node in Tree ***\n')
-min_node = avl_tree.find_min()
-print(f"Minimum value in tree: {min_node.value}")
+min_value = avl_tree.find_min()
+print(f"Minimum value in tree: {min_value}")
+
 
 print('\n*** Finding Maximum Value Node in Tree ***\n')
-max_node = avl_tree.find_max()
-print(f"Maximum value in tree: {max_node.value}")
+max_value = avl_tree.find_max()
+print(f"Maximum value in tree: {max_value}")
+
+#----------------------------------------------------------------------------------------------------------------
+
+#para visualizar el AVL crea un .pdf
+print('\n*** Graph Nodes in Tree ***\n')
+print("Another window will pop up and it will save as AVL-TREE.gv.pdf")
+dot = avl_tree.to_graphviz()
+dot.render("AVL-TREE.gv", view=True)
+
+

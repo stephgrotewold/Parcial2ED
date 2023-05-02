@@ -449,36 +449,51 @@ class AVLTree:
         return node
 
 
-    def find_min(self) -> Union[int, None]:
+    
+    def find_min(self, node=None) -> int:
         """
-        Finds the minimum value in the AVL tree.
-        
+        Recursively finds and returns the minimum value in the subtree rooted at the given node.
+
+        Args:
+            node (Node): The root of the subtree to be searched. Defaults to the root of the entire tree.
+
         Returns:
-            Union[int, None]: The minimum value in the tree, or None if the tree is empty.
+            int: The minimum value in the subtree, or None if the subtree is empty.
         """
-        if self.root is None:
+        if node is None:
+            node = self.root
+
+        if node is None:
             return None
-        
-        node = self.root
+
         while node.left_child is not None:
             node = node.left_child
-        
+
         return node.data
 
+
+
         
 
-    def find_max(self) -> Union[int, None]:
+    def find_max(self, node=None) -> int:
         """
-        Finds the maximum value in the AVL tree.
-        
+        Recursively finds and returns the maximum value in the subtree rooted at the given node.
+
+        Args:
+            node (Node): The root of the subtree to be searched. Defaults to the root of the entire tree.
+
         Returns:
-            Union[int, None]: The maximum value in the tree, or None if the tree is empty.
+            int: The maximum value in the subtree, or None if the subtree is empty.
         """
-        if self.root is None:
+        if node is None:
+            node = self.root
+
+        if node is None:
             return None
-        
-        node = self.root
+
         while node.right_child is not None:
             node = node.right_child
-        
+
         return node.data
+
+
