@@ -21,3 +21,11 @@ Modify the class definition in order to:
 1) Realizar un benchmarking entre la implementación de BST y AVL.
 
 2) Crear una forma de visualizar un objeto AVL Tree. (Utilizar librerias o APIS)
+
+### **Graficar**
+
+Pasos para graficar los arboles:
+
+1) installar el pip install graphviz, dede el CMD power shell de su PC
+
+2) importar al archivo AVL (ya está implementado)
