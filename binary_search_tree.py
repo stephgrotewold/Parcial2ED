@@ -132,7 +132,7 @@ class BinarySearchTree:
         while subtree.left_child is not None:
             subtree = subtree.left_child
 
-        return subtree
+        return subtree.data
 
 
     def find_max(self, subtree: Node) -> int:

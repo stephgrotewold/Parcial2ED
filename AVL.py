@@ -483,50 +483,37 @@ class AVLTree:
 
 
     
-    def find_min(self, node=None) -> int:
+    def find_min(self, subtree: Node) -> int:
         """
-        Recursively finds and returns the minimum value in the subtree rooted at the given node.
+        Find the "min" value in a subtree.
 
         Args:
-            node (Node): The root of the subtree to be searched. Defaults to the root of the entire tree.
+            subtree (Node): The root node of the subtree to search.
 
         Returns:
-            int: The minimum value in the subtree, or None if the subtree is empty.
+            int: The minimum value in the subtree.
         """
-        if node is None:
-            node = self.root
+        while subtree.left_child is not None:
+            subtree = subtree.left_child
 
-        if node is None:
-            return None
-
-        while node.left_child is not None:
-            node = node.left_child
-
-        return node.data
+        return subtree.data
 
 
 
         
 
-    def find_max(self, node=None) -> int:
+    def find_max(self, subtree: Node) -> int:
         """
-        Recursively finds and returns the maximum value in the subtree rooted at the given node.
+        Find the "max" value in a subtree.
 
         Args:
-            node (Node): The root of the subtree to be searched. Defaults to the root of the entire tree.
+            subtree (Node): The root node of the subtree to search.
 
         Returns:
-            int: The maximum value in the subtree, or None if the subtree is empty.
+            int: The maximum value in the subtree.
         """
-        if node is None:
-            node = self.root
+        while subtree.right_child is not None:
+            subtree = subtree.right_child
 
-        if node is None:
-            return None
-
-        while node.right_child is not None:
-            node = node.right_child
-
-        return node.data
-
+        return subtree.data
 
