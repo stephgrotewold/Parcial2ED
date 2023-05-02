@@ -346,13 +346,14 @@ class AVLTree:
             bool: True if the value is found in the tree, False otherwise.
         """
         if node is None:
-            return "No ta' el {} en nuestro arbolito".format(value)
+            return False
         elif value == node.data:
-            return "Si existe el {} en el arbolito".format(value)
+            return True
         elif value < node.data:
             return self._search(value, node.left_child)
         else:
             return self._search(value, node.right_child)
+
 
     def traverse_in_order(self) -> List[int]:
         """
@@ -377,3 +378,123 @@ class AVLTree:
             self._traverse_in_order(node.left_child, result)
             result.append(node.data)
             self._traverse_in_order(node.right_child, result)
+
+
+#-----------------------------------------------------------------------------------------------------------------
+    def delete(self, value: int) -> None:
+        """
+        Deletes the node with the given value from the AVL tree.
+
+        Args:
+            value (int): The value of the node to be deleted.
+
+        Returns:
+            None
+        """
+        self.root = self._delete(value, self.root)
+
+    def _delete(self, value: int, node: Node) -> Node:
+        """
+        Recursively deletes the node with the given value from the subtree rooted at the given node,
+        and balances the tree if necessary. Returns the updated subtree after deletion and balancing.
+
+        Args:
+            value (int): The value of the node to be deleted.
+            node (Node): The root of the subtree where the node is to be deleted.
+
+        Returns:
+            Node: The root of the updated subtree after deletion and balancing.
+        """
+        if node is None:
+            return node
+
+        if value < node.data:
+            node.left_child = self._delete(value, node.left_child)
+        elif value > node.data:
+            node.right_child = self._delete(value, node.right_child)
+        else:
+            # Case 1: Node has no child or only one child
+            if node.left_child is None:
+                return node.right_child
+            elif node.right_child is None:
+                return node.left_child
+            # Case 2: Node has two children
+            else:
+                # Get the node with the next smallest value (in-order successor)
+                successor_node = node.right_child
+                while successor_node.left_child is not None:
+                    successor_node = successor_node.left_child
+
+                # Replace the node's data with the successor node's data
+                node.data = successor_node.data
+
+                # Delete the successor node from the right subtree
+                node.right_child = self._delete(successor_node.data, node.right_child)
+
+        # Update the height and balance factor of the node
+        self.update_height_and_balance_factor(node)
+
+        # Balance the node if necessary
+        balance_factor = self.get_balance_factor(node)
+        if balance_factor > 1:
+            if self.get_balance_factor(node.left_child) < 0:
+                node = self.rotate_left_right(node)
+            else:
+                node = self.rotate_right(node)
+        elif balance_factor < -1:
+            if self.get_balance_factor(node.right_child) > 0:
+                node = self.rotate_right_left(node)
+            else:
+                node = self.rotate_left(node)
+
+        return node
+
+
+    
+    def find_min(self, node=None) -> int:
+        """
+        Recursively finds and returns the minimum value in the subtree rooted at the given node.
+
+        Args:
+            node (Node): The root of the subtree to be searched. Defaults to the root of the entire tree.
+
+        Returns:
+            int: The minimum value in the subtree, or None if the subtree is empty.
+        """
+        if node is None:
+            node = self.root
+
+        if node is None:
+            return None
+
+        while node.left_child is not None:
+            node = node.left_child
+
+        return node.data
+
+
+
+        
+
+    def find_max(self, node=None) -> int:
+        """
+        Recursively finds and returns the maximum value in the subtree rooted at the given node.
+
+        Args:
+            node (Node): The root of the subtree to be searched. Defaults to the root of the entire tree.
+
+        Returns:
+            int: The maximum value in the subtree, or None if the subtree is empty.
+        """
+        if node is None:
+            node = self.root
+
+        if node is None:
+            return None
+
+        while node.right_child is not None:
+            node = node.right_child
+
+        return node.data
+
+
