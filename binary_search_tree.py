@@ -148,7 +148,8 @@ class BinarySearchTree:
         while subtree.right_child is not None:
             subtree = subtree.right_child
 
-        return subtree
+        return subtree.data
+
 
 #-----------------------Delete Implementation--------------------------|        
 

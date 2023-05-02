@@ -346,13 +346,14 @@ class AVLTree:
             bool: True if the value is found in the tree, False otherwise.
         """
         if node is None:
-            return "No ta' el {} en nuestro arbolito".format(value)
+            return False
         elif value == node.data:
-            return "Si existe el {} en el arbolito".format(value)
+            return True
         elif value < node.data:
             return self._search(value, node.left_child)
         else:
             return self._search(value, node.right_child)
+
 
     def traverse_in_order(self) -> List[int]:
         """
