@@ -6,7 +6,7 @@ from AVL import AVLTree
 from binary_search_tree import BinarySearchTree
 
 # Cantidad de valores a insertar
-N = 100000
+N = 1000
 
 # Crear listas de valores aleatorios para insertar en ambos árboles
 values = random.sample(range(N * 10), N)

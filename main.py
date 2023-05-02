@@ -5,7 +5,7 @@ import random
 avl_tree = AVLTree()
 
 #check the loop is inserting all the nodes given
-arr = []
+#arr = []
 
 print('\n*** Inserting Nodes in Tree ***\n')
 
@@ -15,17 +15,17 @@ print('\n*** Inserting Nodes in Tree ***\n')
 #node_values = [77,12, 10, 4, 11, 16, 55, 5, 63, 2]
 
 #insert values at random, you can n to make it the quantity of nodes you want
-n = 200
+n = 1000
 node_values = [random.randint(1, 100) for _ in range(n)]
 
 # insert some values using a loop
 for value in node_values:
     print('Inserting node with value: {}'.format(value))
-    arr.append(value)
+    #arr.append(value)
     avl_tree.insert(value)
 
 
-print(arr)
+#print(arr)
 print('\n*** Searching Nodes in Tree ***\n')
 
 # search for a value
@@ -81,12 +81,13 @@ print(f"Deleted node with value {value_to_delete}")
 print(avl_tree.traverse_in_order())
 
 print('\n*** Finding Minimum Value Node in Tree ***\n')
-min_value = avl_tree.find_min()
+min_value = avl_tree.find_min(avl_tree.root)
 print(f"Minimum value in tree: {min_value}")
 
 
+
 print('\n*** Finding Maximum Value Node in Tree ***\n')
-max_value = avl_tree.find_max()
+max_value = avl_tree.find_max(avl_tree.root)
 print(f"Maximum value in tree: {max_value}")
 
 #----------------------------------------------------------------------------------------------------------------
