@@ -1,19 +1,5 @@
 #aqui pongamos los metodos de insert,search, delete,min,max y traverse.
 
-'''
-Se requiere hacer los siguientes cambios del codigo del BSL para que sea un AVL
-
-1) Cambiar la estructura de nodo a una estructura que contenga la altura del nodo y el factor de equilibrio.
-
-2) Añadir una función para calcular la altura de un nodo, que tomará en cuenta la altura de sus subárboles.
-
-3) Añadir una función para calcular el factor de equilibrio de un nodo, que se define como la diferencia de altura entre el subárbol derecho y el subárbol izquierdo.
-
-4) Añadir las rotaciones necesarias (rotación simple y doble a la derecha y a la izquierda) para mantener el árbol equilibrado después de la inserción y eliminación de nodos.
-
-5) Actualizar la altura y el factor de equilibrio de los nodos después de cada operación.
-'''
-
 from graphviz import Digraph
 from typing import List
 class Node:
@@ -105,6 +91,38 @@ class AVLTree:
     - _insert(self, value: int, node: Node) -> Node:
         Recursively inserts a new node with the given value into the subtree rooted at the given node,
         and balances the tree if necessary. Returns the updated subtree after insertion and balancing.
+    
+    - to_graphviz(self):
+        Generates a Graphviz representation of the AVL tree. Returns a Digraph object representing the AVL tree.
+
+    - _to_graphviz(self, dot, node):
+        Generates a Graphviz representation of the given node in the AVL tree
+        and its children nodes.
+    
+    - search(self, value: int) -> bool:
+        Searches for a node with the given value in the AVL tree. Returns a bool: True if a node with the given value exists, False otherwise.
+    
+    - _search(self, value: int, node: Node) -> bool:
+        Recursively searches for a value in the AVL tree starting from the given node. Returns a bool, True if the value is found in the tree, False otherwise.
+    
+    - traverse_in_order(self) -> List[int]:
+        Traverse the AVL tree in-order and return a list of all values in sorted order. Returns a list of all the values in the AVL tree in sorted order.
+    
+    - _traverse_in_order(self, node: Node, result: List[int]) -> None:
+        Helper method to traverse the AVL tree in-order and append the values to a list.
+
+    - delete(self, value: int) -> None:
+        Deletes the node with the given value from the AVL tree.
+    
+    - _delete(self, value: int, node: Node) -> Node:
+        Recursively deletes the node with the given value from the subtree rooted at the given node,
+        and balances the tree if necessary. Returns the updated subtree after deletion and balancing.
+    
+    - find_min(self, node=None) -> int:
+        Recursively finds and returns the minimum value in the subtree rooted at the given node.
+    
+    - find_max(self, node=None) -> int:
+        Recursively finds and returns the maximum value in the subtree rooted at the given node.
     """   
 
     def to_graphviz(self):
